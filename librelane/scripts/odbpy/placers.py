@@ -67,6 +67,9 @@ def manual_macro_placement(reader, config, fixed):
 
     db_units_per_micron = reader.block.getDbUnitsPerMicron()
 
+    # Get manufacturing grid in db units
+    manufacturing_grid = reader.db.getTech().getManufacturingGrid()
+
     # read config
     macros = {}
     with open(config, "r") as config_file:
@@ -101,8 +104,8 @@ def manual_macro_placement(reader, config, fixed):
             print("Placing", inst_name)
             macro_data = macros[inst_name]
             _, x, y, orientation = macro_data
-            x = gridify(x, 5)
-            y = gridify(y, 5)
+            x = gridify(x, manufacturing_grid)
+            y = gridify(y, manufacturing_grid)
             inst.setOrient(lef_rot_to_oa_rot(orientation))
             inst.setLocation(x, y)
             if fixed:
