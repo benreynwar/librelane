@@ -21,7 +21,7 @@ Feature contributions should be directed towards the `dev` branch.
 ## Testing
 
 Before you submit your changes, it's prudent to perform some kind of smoke test.
-`python3 -m librelane ./designs/spm/config.json` tests a simple spm design to
+`python3 -m librelane ./examples/spm/config.yaml` tests a simple spm design to
 ensure nothing has gone horribly wrong.
 
 ## Language Standards
